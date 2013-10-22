@@ -1,0 +1,28 @@
+
+Titanium.UI.setBackgroundImage('splash_screen.png');
+
+// create tab group
+var tabGroup = Titanium.UI.createTabGroup();
+var register = Ti.UI.createWindow({
+	backgroundImage: 'splash_screen.png',
+	title: 'User Registration',
+	tabBarHidden:false,
+	url:'main_windows/registration.js'
+});
+var login = Ti.UI.createWindow({
+	backgroundImage: 'splash_screen.png',
+	title: 'User Login',
+	tabBarHidden:false,
+	url:'main_windows/login.js'
+});
+var registerTab= Titanium.UI.createTab({
+	title: 'Register',
+	window:register
+});
+var loginTab= Titanium.UI.createTab({
+	title: 'Login',
+	window:login
+});
+
+
+var Cloud = require("ti.cloud");

@@ -1,0 +1,93 @@
+/**
+ * @author Sarah
+ */
+var win = Titanium.UI.currentWindow;
+var regUsername = Titanium.UI.createTextField({
+	color:'black',
+	top:50,
+	left:90,
+	width:300,
+	height:60,
+	hintText:'Username',
+	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
+	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+});
+win.add(regUsername);
+var regPassword = Titanium.UI.createTextField({
+	color:'black',
+	top:120,
+	left:90,
+	width:300,
+	height:60,
+	hintText:'Password',
+	passwordMask:true,
+	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
+	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+});
+win.add(regPassword);
+var regPassword_confirmation = Titanium.UI.createTextField({
+	color:'black',
+	top:190,
+	left:90,
+	width:300,
+	height:60,
+	hintText:'Confirm Password',
+	passwordMask:true,
+	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
+	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+});
+win.add(regPassword_confirmation);
+var regFirst_name = Titanium.UI.createTextField({
+	color:'black',
+	top:260,
+	left:90,
+	width:300,
+	height:60,
+	hintText:'First Name',
+	passwordMask:true,
+	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
+	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+});
+win.add(regFirst_name);
+var regLast_name = Titanium.UI.createTextField({
+	color:'black',
+	top:330,
+	left:90,
+	width:300,
+	height:60,
+	hintText:'Last Name',
+	passwordMask:true,
+	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
+	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+});
+win.add(regLast_name);
+var registerBtn = Titanium.UI.createButton({
+	title:'Register',
+	top:400,
+	width:100,
+	height:50,
+	borderRadius:1,
+	font:{fontFamily:'Arial', fontWeight:'bold', fontSize:14}
+});
+win.add(registerBtn);
+tabGroup(open);
+win(open);
+
+Cloud.Users.create({
+    username: username.value,
+    password: password.value,
+    password_confirmation: confirmPassword.value,
+    first_name: firstName.value,
+    last_name: lastName.value
+}, function (e) {
+    if (e.success) {
+		// user created successfully
+    } else {
+        // oops, something went wrong
+    }
+});
