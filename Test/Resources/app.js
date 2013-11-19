@@ -4,29 +4,33 @@ var mainWin = Ti.UI.createWindow({
 });
 
 var banner = Ti.UI.createView({
-	height: '10%',
+	height: '20%',
+	top: 10,
 	width: Ti.UI.FILL,
+	borderRadius: 10
 });
 mainWin.add(banner);
 
 var bannerLabel=Ti.UI.createLabel({
 	text: 'Welcome to MotorLyfe!',
 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-	font: {fontSize: '27sp', fontWeigh: 'bold'}
+	font: {fontSize: '27sp', fontWeight: 'bold'}
 });
 banner.add(bannerLabel);
 
 var bodyView=Ti.UI.createView({
-	height: '90%',
+	height: '80%',
+	top: 10,
 	width: Ti.UI.FILL,
+	borderRadius: 10
 });
 mainWin.add(bodyView);
 
 var regBtn= Ti.UI.createButton({
 	backgroundColor: '#ffd800',
-	width: '60%', height: '12.5%',
-	top: '20%',
-	left: '20%',
+	width: 300, height: 80,
+	top: 40,
+	left: 80,
 	title: 'Register',
 	color: 'black',
 	borderRadius: 10
@@ -44,10 +48,9 @@ regBtn.addEventListener('click',function(e)
 
 var loginBtn= Ti.UI.createButton({
 	backgroundColor: '#ffd800',
-	width: '60%',
-	height: '12.5%',
-	top: '35%',
-	left: '20%',
+	width: 300, height: 80,
+	top: 150,
+	left: 80,
 	title: 'Login',
 	color: 'black',
 	borderRadius: 10

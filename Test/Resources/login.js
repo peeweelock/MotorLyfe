@@ -1,7 +1,6 @@
 var l= Ti.UI.currentWindow;
 
 var username=Titanium.UI.createTextField({
-	color: 'black',
 	top: '40%',
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
 	width: '63%',
@@ -35,16 +34,16 @@ l.add(loginBtn);
 var Cloud=	require("ti.cloud");
 
 loginBtn.addEventListener('click', function(){
-	Cloud.Users.login({
-    	login: username.value,
-    	password: password.value,
-	}, function (e) {
-    	if (e.success) {
-        	var user = e.users[0];
-			var profileWin = Titanium.UI.createWindow({
-   				url: 'profile.js',
-   				layout: 'vertical'
-   			});
+Cloud.Users.login({
+    login: username.value,
+    password: password.value,
+}, function (e) {
+    if (e.success) {
+        var user = e.users[0];
+		var profileWin = Titanium.UI.createWindow({
+   		url: 'profile.js',
+   		layout: 'vertical'
+   	});
    		l.close();
    		profileWin.open();
     } else {
