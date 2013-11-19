@@ -1,117 +1,68 @@
-var win = Ti.UI.createWindow({
-	backgroundColor: 'black',
+var mainWin = Ti.UI.createWindow({
+	backgroundImage: 'default_bg.png',
 	layout: 'vertical'
 });
 
-var v1 = Ti.UI.createView({
-	backgroundColor: '#cccccc',
-	opacity: .5,
+var banner = Ti.UI.createView({
 	height: '10%',
-	top: 10,
 	width: Ti.UI.FILL,
-	borderRadius: 10
 });
+mainWin.add(banner);
 
-var search = Titanium.UI.createSearchBar({
-    barColor:'#000', 
-    showCancel:false,
-    height:60,
-    hintText: 'Search MotorLyfe for...',
-    width:240,
-    right: 20,
-    font: {fontSize: 20}
+var bannerLabel=Ti.UI.createLabel({
+	text: 'Welcome to MotorLyfe!',
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font: {fontSize: '27sp', fontWeigh: 'bold'}
 });
+banner.add(bannerLabel);
 
-var v2 = Ti.UI.createView({
-	backgroundColor: '#cccccc',
-	height: '20%',
-	top: 10,
+var bodyView=Ti.UI.createView({
+	height: '90%',
 	width: Ti.UI.FILL,
-	borderRadius: 10
 });
+mainWin.add(bodyView);
 
-var t1Name= Ti.UI.createTextField({
-	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-	backgroundColor: '#cccccc',
+var regBtn= Ti.UI.createButton({
+	backgroundColor: '#ffd800',
+	width: '60%', height: '12.5%',
+	top: '20%',
+	left: '20%',
+	title: 'Register',
 	color: 'black',
- 	width: 250, height: 60,
- 	hintText: 'Enter Your Name',
- 	left: 200,
- 	maxLength: 30
-});
-
-var picBtn= Ti.UI.createButton({
-	backgroundImage: 'User.png',
-	width: 140, height: 140,
-	left: 30
-});
-picBtn.addEventListener('click',function(e)
-{
-   Titanium.API.info("You clicked the button");
-});
-
-var v3= Ti.UI.createView({
-	backgroundColor: '#cccccc',
-	height: '15%',
-	top: 10,
-	width: Ti.UI.FILL,
 	borderRadius: 10
 });
-
-var entryBtn= Ti.UI.createButton({
-	title: 'Capture New Entry',
-	width: 130, height: 100,
-	left: 30,
-	backgroundColor: 'black',
-	color: '#cccccc',
-	borderRadius: 10
-});
-entryBtn.addEventListener('click',function(e)
+regBtn.addEventListener('click',function(e)
 {
-   var win2 = Titanium.UI.createWindow({
-   	backgroundColor: 'black',
+   var winReg = Titanium.UI.createWindow({
+   	backgroundImage: 'default_bg.png',
    	layout: 'vertical',
-   	title: 'Create A New Entry',
-   	url: 'entry.js'
+   	url: 'registration.js'
    });
-   win2.open();
+   mainWin.close();
+   winReg.open();
 });
 
-var updateEntryBtn= Ti.UI.createButton({
-	title: 'Update Entry',
-	width: 130, height: 100,
-	left: 170,
-	backgroundColor: 'black',
-	color: '#cccccc',
+var loginBtn= Ti.UI.createButton({
+	backgroundColor: '#ffd800',
+	width: '60%',
+	height: '12.5%',
+	top: '35%',
+	left: '20%',
+	title: 'Login',
+	color: 'black',
 	borderRadius: 10
 });
-updateEntryBtn.addEventListener('click',function(e)
+loginBtn.addEventListener('click',function(e)
 {
-   Titanium.API.info("You clicked the button");
+   var winLogin = Titanium.UI.createWindow({
+   	backgroundImage: 'default_bg.png',
+   	layout: 'vertical',
+   	url: 'login.js'
+   });
+   mainWin.close();
+   winLogin.open();
 });
 
-var updatePicBtn= Ti.UI.createButton({
-	title: 'Update Picture',
-	width: 130, height: 100,
-	left: 310,
-	backgroundColor: 'black',
-	color: '#cccccc',
-	borderRadius: 10
-});
-updatePicBtn.addEventListener('click',function(e)
-{
-   Titanium.API.info("You clicked the button");
-});
-
-v3.add(updatePicBtn);
-v3.add(updateEntryBtn);
-v3.add(entryBtn);
-v1.add(search);
-v2.add(picBtn);
-v2.add(t1Name);
-win.add(v1);
-win.add(v2);
-win.add(v3);
-win.open({fullscreen:true});
-
-
+bodyView.add(loginBtn);
+bodyView.add(regBtn);
+mainWin.open();
